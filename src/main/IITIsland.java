@@ -26,6 +26,7 @@ import inhabitants.Observer;
 import inhabitants.People;
 import islandStructure.*;
 import marriage.Priest;
+import waterContainer.*;
 
 public class IITIsland implements IIsland{
 	ArrayList<String> floraList;
@@ -90,6 +91,13 @@ public class IITIsland implements IIsland{
 		collect.setBounds(565,230,150,30);
 		collect.setBackground(Color.gray);
 		panel.add(collect);
+		
+		collect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				IWork work=new TakingWater().goNext(new TakingWater().goNext(new PrayForRain()));
+				work.doWork(1500);
+			}
+		});
 		
 		JButton day = new JButton("Special Day");
 		day.setBounds(770,20,150,30);
